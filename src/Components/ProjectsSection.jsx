@@ -75,7 +75,7 @@ export const ProjectsSection = () => {
                                 <h3 className="text-xl font-semibold mb-1"> {project.title}</h3>
                                 <p className="text-muted-foreground text-sm mb-4"> {project.description}</p>
                                 
-                                <div className="felx justify-between items-center">
+                                <div className="flex justify-between items-center">
                                     <div className="flex space-x-3">
                                         <a 
                                             href={project.demoUrl} 
@@ -102,7 +102,7 @@ export const ProjectsSection = () => {
                     <a 
                         className="cosmic-button w-fit flex items-center mx-auto gap-2"
                         target="_blank"
-                        href="#"
+                        href="https://github.com/strifeja"
                     >
                         Check My Github <ArrowRight size={16}/>
                     </a>
