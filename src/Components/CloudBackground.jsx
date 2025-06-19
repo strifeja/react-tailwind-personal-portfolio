@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 export const CloudBackground = () => {
     const [clouds, setClouds] = useState([]);
     const [movingClouds, setMovingClouds] = useState([]);
+    const [movingCloudsLeft, setMovingCloudsLeft] = useState([]);
 
     useEffect(() => {
         generateClouds();
         generateMovingClouds();
+        generateMovingCloudsLeft();
 
         const handleResize = () => {
             generateClouds();
@@ -19,11 +21,11 @@ export const CloudBackground = () => {
     }, []);
 
     const generateClouds = () => {
-        const newClouds = Array.from({ length: 15 }, (_, i) => ({
+        const newClouds = Array.from({ length: 12 }, (_, i) => ({
             id: i,
             size: Math.random() * 200 + 100,
             top: Math.random() * 60,
-            left: Math.random() * 100,
+            left: Math.random() * 110 - 10,
             duration: Math.random() * 40 + 30,
         }));
         setClouds(newClouds);
@@ -37,15 +39,34 @@ export const CloudBackground = () => {
             newMovingClouds.push({
                 id: i,
                 size: Math.random() * 300 + 100,
-                top: Math.random() * 60,
-                left: Math.random() * 100,
+                top: Math.random() * 100,
+                left: 0,
                 delay: Math.random() * 15,
-                animationDuration: 25,
+                animationDuration: Math.random() * 100 + 35,
             });
         }
 
 
         setMovingClouds(newMovingClouds);
+    };
+
+    const generateMovingCloudsLeft = () => {
+        const numberOfMovingClouds = 4;
+        const newMovingClouds = [];
+
+        for (let i = 0; i < numberOfMovingClouds; i++) {
+            newMovingClouds.push({
+                id: i,
+                size: Math.random() * 300 + 100,
+                top: Math.random() * 100,
+                left: 0,
+                delay: Math.random() * 15,
+                animationDuration: Math.random() * 100 + 35,
+            });
+        }
+
+
+        setMovingCloudsLeft(newMovingClouds);
     };
 
     return (
@@ -98,6 +119,22 @@ export const CloudBackground = () => {
                     }}
                 />
             ))}
+
+            {movingCloudsLeft.map((movingCloudsLeft) => (
+                <div
+                    key={movingCloudsLeft.id}
+                    className="movingCloudLeft animate-movingCloudLeft"
+                    style={{
+                        width: movingCloudsLeft.size + "px",
+                        height: movingCloudsLeft.size / 2 + "px",
+                        left: movingCloudsLeft.left + "%",
+                        top: movingCloudsLeft.top + "%",
+                        animationDelay: movingCloudsLeft.delay,
+                        animationDuration: movingCloudsLeft.animationDuration + "s",
+                    }}
+                />
+            ))}
+
         </div>
     );
 };
