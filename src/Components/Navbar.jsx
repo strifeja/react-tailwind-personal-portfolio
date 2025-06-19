@@ -28,7 +28,7 @@ export const Navbar = () => {
     return (
         <nav 
             className={cn(
-                "fixed w-full z-40 transition-all duration-300", 
+                "fixed w-full z-40 transition-all duration-300 right-6", 
                 isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
             )}
         >
@@ -38,7 +38,7 @@ export const Navbar = () => {
                     className="text-xl font-bold text-primary flex items-center" 
                     href="#hero"
                 >
-                    <span className="relative z-10">
+                    <span className="relative z-10 left-6">
                         <span className="text-glow text-foreground"> Jason Strife </span> Portfolio
                     </span>
                 </a>
@@ -60,7 +60,7 @@ export const Navbar = () => {
 
                 <button 
                     onClick={() => setIsMenuOpen((prev) => !prev)}
-                    className="md:hidden p-2 text-foreground z-50"
+                    className="md:hidden p-2 text-foreground z-50 relative left-4"
                     aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
                 > 
                     {isMenuOpen ? <X size={24}/> : <Menu size={24}/>} 
