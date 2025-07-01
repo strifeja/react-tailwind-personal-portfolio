@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 export const CloudBackground = () => {
     const [clouds, setClouds] = useState([]);
     const [movingClouds, setMovingClouds] = useState([]);
@@ -15,7 +14,7 @@ export const CloudBackground = () => {
             generateClouds();
         };
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
 
         return () => window.removeEventListener("resize", handleResize);
     }, []);
@@ -26,7 +25,7 @@ export const CloudBackground = () => {
             size: Math.random() * 200 + 100,
             top: Math.random() * 60,
             left: Math.random() * 110 - 10,
-            duration: Math.random() * 40 + 30,
+            duration: Math.random() * 40 + 30
         }));
         setClouds(newClouds);
     };
@@ -42,10 +41,9 @@ export const CloudBackground = () => {
                 top: Math.random() * 100,
                 left: 0,
                 delay: Math.random() * 15,
-                animationDuration: Math.random() * 100 + 35,
+                animationDuration: Math.random() * 200 + 45
             });
         }
-
 
         setMovingClouds(newMovingClouds);
     };
@@ -61,10 +59,9 @@ export const CloudBackground = () => {
                 top: Math.random() * 100,
                 left: 0,
                 delay: Math.random() * 15,
-                animationDuration: Math.random() * 100 + 35,
+                animationDuration: Math.random() * 200 + 45
             });
         }
-
 
         setMovingCloudsLeft(newMovingClouds);
     };
@@ -80,14 +77,15 @@ export const CloudBackground = () => {
                         height: cloud.size / 2 + "px",
                         top: cloud.top + "%",
                         left: cloud.left + "%",
-                        animationDuration: cloud.animationDuration + "s",
+                        animationDuration: cloud.animationDuration + "s"
                     }}
                 >
-
-                    {Array.from({ length: Math.floor(Math.random() * 3) + 3 }).map((_, i) => {
+                    {Array.from({
+                        length: Math.floor(Math.random() * 3) + 3
+                    }).map((_, i) => {
                         const puffSize = Math.random() * 0.9 + 0.9; // 0.6x to 1.2x
                         const offsetX = Math.random() * 100 - 50; // -50 to +50%
-                        const offsetY = Math.random() * 20 - 10;  // slight vertical offset
+                        const offsetY = Math.random() * 20 - 10; // slight vertical offset
                         return (
                             <div
                                 key={i}
@@ -97,7 +95,7 @@ export const CloudBackground = () => {
                                     height: `${puffSize * 30}px`,
                                     left: `${50 + offsetX}%`,
                                     top: `${50 + offsetY}%`,
-                                    transform: `translate(-50%, -50%)`,
+                                    transform: `translate(-50%, -50%)`
                                 }}
                             />
                         );
@@ -115,7 +113,7 @@ export const CloudBackground = () => {
                         left: movingCloud.left + "%",
                         top: movingCloud.top + "%",
                         animationDelay: movingCloud.delay,
-                        animationDuration: movingCloud.animationDuration + "s",
+                        animationDuration: movingCloud.animationDuration + "s"
                     }}
                 />
             ))}
@@ -130,11 +128,11 @@ export const CloudBackground = () => {
                         left: movingCloudsLeft.left + "%",
                         top: movingCloudsLeft.top + "%",
                         animationDelay: movingCloudsLeft.delay,
-                        animationDuration: movingCloudsLeft.animationDuration + "s",
+                        animationDuration:
+                            movingCloudsLeft.animationDuration + "s"
                     }}
                 />
             ))}
-
         </div>
     );
 };
